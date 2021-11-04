@@ -4,17 +4,21 @@ import com.chkan.cleanarchitecturebeerlist.data.datasource.api.exceptions.handle
 import com.chkan.cleanarchitecturebeerlist.data.datasource.api.model.ApiResult
 import com.chkan.cleanarchitecturebeerlist.data.datasource.api.retrofit.ApiService
 import java.lang.Exception
+import javax.inject.Inject
 
 const val MAX_RESULTS_PER_PAGE: Int = 20
 
-class BeersNetworkDataSource(private val beersApiService: ApiService) {
+class BeersNetworkDataSource @Inject constructor (private val beersApiService: ApiService) {
 
-    suspend fun getAllBeers(page: String): ApiResult {
+    val number = 5
+
+  /*  suspend fun getAllBeers(page: String): Int {
         return try {
-            val beers = beersApiService.getAllBeers(page, MAX_RESULTS_PER_PAGE.toString())
-            ApiResult.Success(beers)
+            val beers = beersApiService.getAllBeers(page, MAX_RESULTS_PER_PAGE.toString()).size
+            beers
         } catch (ex: Exception) {
-            ApiResult.Error(handleNetworkExceptions(ex))
+            0
+            //ApiResult.Error(handleNetworkExceptions(ex))
         }
-    }
+    }*/
 }
